@@ -1,0 +1,43 @@
+{
+  "name": "quicktrace-js",
+  "version": "1.0.0",
+  "description": "A lightweight, colorful tracing library for JavaScript with cross-platform safe colors and smart filtering capabilities",
+  "main": "tracer.js",
+  "scripts": {
+    "test": "node example.js",
+    "demo": "node cross_platform_demo.js"
+  },
+  "keywords": [
+    "tracing",
+    "performance",
+    "monitoring",
+    "debug",
+    "profiling",
+    "colorful",
+    "terminal",
+    "quicktrace",
+    "logger",
+    "timing"
+  ],
+  "author": "QuickTrace Contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LeDuyViet/quicktrace.git",
+    "directory": "js"
+  },
+  "bugs": {
+    "url": "https://github.com/LeDuyViet/quicktrace/issues"
+  },
+  "homepage": "https://github.com/LeDuyViet/quicktrace#readme",
+  "files": [
+    "tracer.js",
+    "example.js",
+    "cross_platform_demo.js",
+    "README.md",
+    "examples/"
+  ]
+} 

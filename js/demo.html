@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!--
+//go:build ignore
+// +build ignore
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tracing Library Demo</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #4fc3f7;
+            text-align: center;
+            border-bottom: 2px solid #4fc3f7;
+            padding-bottom: 10px;
+        }
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #2d2d2d;
+        }
+        .demo-title {
+            color: #81c784;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .demo-description {
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        button {
+            background-color: #4fc3f7;
+            color: #1e1e1e;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            font-family: inherit;
+        }
+        button:hover {
+            background-color: #29b6f6;
+        }
+        .console-note {
+            background-color: #ff5722;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        .code-block {
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .instructions {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 JavaScript Tracing Library Demo</h1>
+        
+        <div class="console-note">
+            📝 Mở Developer Console (F12) để xem output của các demo!
+        </div>
+
+        <div class="instructions">
+            <h3>📋 Hướng dẫn sử dụng:</h3>
+            <ol>
+                <li>Mở Developer Console (nhấn F12)</li>
+                <li>Click vào các nút demo bên dưới</li>
+                <li>Quan sát output trong Console</li>
+                <li>Thử các style output khác nhau</li>
+            </ol>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">🎨 Demo 1: Colorful Output Style</div>
+            <div class="demo-description">
+                Demo style colorful với các màu sắc và border đẹp mắt
+            </div>
+            <button onclick="demoColorfulStyle()">Chạy Colorful Demo</button>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">⚡ Demo 2: Minimal Output Style</div>
+            <div class="demo-description">
+                Demo style minimal - output ngắn gọn và tập trung
+            </div>
+            <button onclick="demoMinimalStyle()">Chạy Minimal Demo</button>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">📊 Demo 3: Detailed Output Style</div>
+            <div class="demo-description">
+                Demo style detailed với bảng chi tiết, progress bar và statistics
+            </div>
+            <button onclick="demoDetailedStyle()">Chạy Detailed Demo</button>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">📄 Demo 4: JSON Output Style</div>
+            <div class="demo-description">
+                Demo output dạng JSON để dễ dàng parse và analyze
+            </div>
+            <button onclick="demoJSONStyle()">Chạy JSON Demo</button>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">🚄 Demo 5: Performance Testing</div>
+            <div class="demo-description">
+                Demo test performance với các operations có thời gian khác nhau
+            </div>
+            <button onclick="demoPerformanceTesting()">Chạy Performance Demo</button>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">🔧 Demo 6: Advanced Options</div>
+            <div class="demo-description">
+                Demo các options nâng cao: filtering, grouping, thresholds
+            </div>
+            <button onclick="demoAdvancedOptions()">Chạy Advanced Demo</button>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">🌐 Demo 7: All Styles Comparison</div>
+            <div class="demo-description">
+                So sánh tất cả các style output với cùng một workflow
+            </div>
+            <button onclick="demoAllStyles()">Chạy All Styles Demo</button>
+        </div>
+
+        <div class="code-block">
+            <h3>📝 Example Usage Code:</h3>
+            <pre><code>// Basic usage
+const tracer = createTracer('My Operation');
+tracer.span('Step 1: Initialize');
+// ... do some work ...
+tracer.span('Step 2: Process');
+// ... do more work ...
+tracer.end();
+
+// With options
+const tracer = createTracer('Advanced Operation',
+    TracerOptions.withOutputStyle(OutputStyle.Colorful),
+    TracerOptions.withMinTotalDuration(100)
+);
+</code></pre>
+        </div>
+    </div>
+
+    <!-- Load the tracing library -->
+    <script src="tracer.js"></script>
+    
+    <script>
+        // Demo functions
+        function simulateWork(ms) {
+            const start = performance.now();
+            while (performance.now() - start < ms) {
+                // Simulate work
+            }
+        }
+
+        function simulateAsyncWork(ms) {
+            return new Promise(resolve => {
+                setTimeout(resolve, ms);
+            });
+        }
+
+        function demoColorfulStyle() {
+            console.log('\n🎨 === COLORFUL STYLE DEMO ===');
+            
+            const tracer = createTracer('Database Operations', 
+                TracerOptions.withOutputStyle(OutputStyle.Colorful)
+            );
+            
+            tracer.span('Connect to database');
+            simulateWork(20);
+            
+            tracer.span('Execute query');
+            simulateWork(150);
+            
+            tracer.span('Process results');
+            simulateWork(80);
+            
+            tracer.span('Close connection');
+            simulateWork(10);
+            
+            tracer.end();
+        }
+
+        function demoMinimalStyle() {
+            console.log('\n⚡ === MINIMAL STYLE DEMO ===');
+            
+            const tracer = createTracer('API Request', 
+                TracerOptions.withOutputStyle(OutputStyle.Minimal)
+            );
+            
+            tracer.span('Validate input');
+            simulateWork(5);
+            
+            tracer.span('Call external API');
+            simulateWork(300);
+            
+            tracer.span('Parse response');
+            simulateWork(25);
+            
+            tracer.end();
+        }
+
+        function demoDetailedStyle() {
+            console.log('\n📊 === DETAILED STYLE DEMO ===');
+            
+            const tracer = createTracer('Complex Workflow', 
+                TracerOptions.withOutputStyle(OutputStyle.Detailed)
+            );
+            
+            tracer.span('Initialize system');
+            simulateWork(50);
+            
+            tracer.span('Load configuration');
+            simulateWork(30);
+            
+            tracer.span('Connect to services');
+            simulateWork(200);
+            
+            tracer.span('Validate permissions');
+            simulateWork(75);
+            
+            tracer.span('Execute main logic');
+            simulateWork(500);
+            
+            tracer.span('Generate report');
+            simulateWork(120);
+            
+            tracer.span('Cleanup resources');
+            simulateWork(15);
+            
+            tracer.end();
+        }
+
+        function demoJSONStyle() {
+            console.log('\n📄 === JSON STYLE DEMO ===');
+            
+            const tracer = createTracer('Data Processing Pipeline', 
+                TracerOptions.withOutputStyle(OutputStyle.JSON)
+            );
+            
+            tracer.span('Read input file');
+            simulateWork(40);
+            
+            tracer.span('Parse data');
+            simulateWork(90);
+            
+            tracer.span('Transform data');
+            simulateWork(180);
+            
+            tracer.span('Write output');
+            simulateWork(60);
+            
+            tracer.end();
+        }
+
+        function demoPerformanceTesting() {
+            console.log('\n🚄 === PERFORMANCE TESTING DEMO ===');
+            
+            const tracer = createTracer('Performance Test', 
+                TracerOptions.withOutputStyle(OutputStyle.Colorful),
+                TracerOptions.withPerformanceMode()
+            );
+            
+            tracer.span('Ultra fast operation');
+            simulateWork(2);  // < 10ms - white
+            
+            tracer.span('Very fast operation');
+            simulateWork(25); // 10-50ms - cyan
+            
+            tracer.span('Fast operation');
+            simulateWork(75); // 50-100ms - green
+            
+            tracer.span('Medium operation');
+            simulateWork(250); // 100-500ms - blue
+            
+            tracer.span('Medium-slow operation');
+            simulateWork(750); // 500ms-1s - magenta
+            
+            tracer.span('Slow operation');
+            simulateWork(2000); // 1s-5s - red
+            
+            tracer.end();
+        }
+
+        function demoAdvancedOptions() {
+            console.log('\n🔧 === ADVANCED OPTIONS DEMO ===');
+            
+            // Demo 1: Show slow only
+            console.log('\n--- Show Slow Operations Only (>100ms) ---');
+            const slowTracer = createTracer('Slow Operations Filter', 
+                TracerOptions.withOutputStyle(OutputStyle.Detailed),
+                TracerOptions.withShowSlowOnly(100)
+            );
+            
+            slowTracer.span('Fast operation 1');
+            simulateWork(5);
+            
+            slowTracer.span('Fast operation 2');
+            simulateWork(25);
+            
+            slowTracer.span('Slow operation 1');
+            simulateWork(150);
+            
+            slowTracer.span('Fast operation 3');
+            simulateWork(10);
+            
+            slowTracer.span('Slow operation 2');
+            simulateWork(300);
+            
+            slowTracer.end();
+            
+            // Demo 2: Hide ultra fast
+            console.log('\n--- Hide Ultra Fast Operations (<50ms) ---');
+            const filteredTracer = createTracer('Filtered Operations', 
+                TracerOptions.withOutputStyle(OutputStyle.Colorful),
+                TracerOptions.withHideUltraFast(50)
+            );
+            
+            filteredTracer.span('Ultra fast op');
+            simulateWork(5);
+            
+            filteredTracer.span('Medium op');
+            simulateWork(100);
+            
+            filteredTracer.span('Another ultra fast');
+            simulateWork(10);
+            
+            filteredTracer.span('Slow op');
+            simulateWork(200);
+            
+            filteredTracer.end();
+        }
+
+        async function demoAllStyles() {
+            console.log('\n🌐 === ALL STYLES COMPARISON ===');
+            console.log('Same workflow, different output styles:\n');
+            
+            const styles = [
+                { name: 'Colorful', style: OutputStyle.Colorful },
+                { name: 'Minimal', style: OutputStyle.Minimal },
+                { name: 'Detailed', style: OutputStyle.Detailed },
+                { name: 'JSON', style: OutputStyle.JSON }
+            ];
+            
+            for (const styleConfig of styles) {
+                console.log(`\n--- ${styleConfig.name.toUpperCase()} STYLE ---`);
+                
+                const tracer = createTracer('Sample Workflow', 
+                    TracerOptions.withOutputStyle(styleConfig.style)
+                );
+                
+                tracer.span('Initialize');
+                simulateWork(30);
+                
+                tracer.span('Process data');
+                simulateWork(120);
+                
+                tracer.span('Save results');
+                simulateWork(60);
+                
+                tracer.span('Cleanup');
+                simulateWork(15);
+                
+                tracer.end();
+                
+                // Small delay between demos
+                await simulateAsyncWork(100);
+            }
+        }
+
+        // Welcome message
+        console.log('🚀 JavaScript Tracing Library Demo Ready!');
+        console.log('👆 Click buttons above to see different demo outputs');
+        console.log('📝 Check out the colorful console outputs below:');
+        console.log('');
+    </script>
+</body>
+</html> 
