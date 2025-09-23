@@ -10,23 +10,23 @@ import com.leduy.quicktrace.Tracer;
 public class StylesExample {
     
     private static void simulateWork(Tracer tracer) throws InterruptedException {
-        tracer.span("Load configuration");
         Thread.sleep(25);
-        
-        tracer.span("Connect to database");
+        tracer.span("Load configuration");
+
         Thread.sleep(75);
-        
-        tracer.span("Execute complex query");
+        tracer.span("Connect to database");
+
         Thread.sleep(120);
-        
-        tracer.span("Process results");
+        tracer.span("Execute complex query");
+
         Thread.sleep(45);
-        
-        tracer.span("Cache data");
+        tracer.span("Process results");
+
         Thread.sleep(15);
-        
-        tracer.span("Generate response");
+        tracer.span("Cache data");
+
         Thread.sleep(8);
+        tracer.span("Generate response");
     }
     
     public static void main(String[] args) throws InterruptedException {

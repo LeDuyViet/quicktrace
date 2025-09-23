@@ -5,39 +5,39 @@ import 'package:quicktrace/quicktrace.dart';
 
 Future<void> simulateVariousOperations(QuickTracer tracer) async {
   // Ultra fast operations
-  tracer.span('Ultra fast operation 1');
   await Future.delayed(Duration(microseconds: 500));
+  tracer.span('Ultra fast operation 1');
 
-  tracer.span('Ultra fast operation 2');
   await Future.delayed(Duration(microseconds: 800));
+  tracer.span('Ultra fast operation 2');
 
   // Fast operations
-  tracer.span('Fast validation');
   await Future.delayed(Duration(milliseconds: 5));
+  tracer.span('Fast validation');
 
-  tracer.span('Quick lookup');
   await Future.delayed(Duration(milliseconds: 8));
+  tracer.span('Quick lookup');
 
   // Medium operations
-  tracer.span('Medium processing');
   await Future.delayed(Duration(milliseconds: 45));
+  tracer.span('Medium processing');
 
-  tracer.span('Similar processing');
   await Future.delayed(Duration(milliseconds: 48)); // Similar to above
+  tracer.span('Similar processing');
 
-  tracer.span('Another similar task');
   await Future.delayed(Duration(milliseconds: 44)); // Also similar
+  tracer.span('Another similar task');
 
   // Slow operations
-  tracer.span('Slow database query');
   await Future.delayed(Duration(milliseconds: 150));
+  tracer.span('Slow database query');
 
-  tracer.span('Complex computation');
   await Future.delayed(Duration(milliseconds: 200));
+  tracer.span('Complex computation');
 
   // Very slow operation
-  tracer.span('Very slow external API call');
   await Future.delayed(Duration(milliseconds: 800));
+  tracer.span('Very slow external API call');
 }
 
 void main() async {

@@ -14,17 +14,17 @@ public class BasicExample {
                 .outputStyle(OutputStyle.DETAILED)
                 .build();
         
-        tracer.span("Initialize database");
         Thread.sleep(30);
-        
-        tracer.span("Load user data");
+        tracer.span("Initialize database");
+
         Thread.sleep(50);
-        
-        tracer.span("Process data");
+        tracer.span("Load user data");
+
         Thread.sleep(20);
-        
-        tracer.span("Generate response");
+        tracer.span("Process data");
+
         Thread.sleep(10);
+        tracer.span("Generate response");
         
         tracer.end();
     }

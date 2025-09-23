@@ -2,39 +2,39 @@ const { Tracer } = require('../tracer.js');
 
 async function simulateVariousOperations(tracer) {
     // Ultra fast operations
-    tracer.span('Ultra fast operation 1');
     await new Promise(resolve => setTimeout(resolve, 0.5));
+    tracer.span('Ultra fast operation 1');
 
-    tracer.span('Ultra fast operation 2');
     await new Promise(resolve => setTimeout(resolve, 0.8));
+    tracer.span('Ultra fast operation 2');
 
     // Fast operations
-    tracer.span('Fast validation');
     await new Promise(resolve => setTimeout(resolve, 5));
+    tracer.span('Fast validation');
 
-    tracer.span('Quick lookup');
     await new Promise(resolve => setTimeout(resolve, 8));
+    tracer.span('Quick lookup');
 
     // Medium operations
-    tracer.span('Medium processing');
     await new Promise(resolve => setTimeout(resolve, 45));
+    tracer.span('Medium processing');
 
-    tracer.span('Similar processing');
     await new Promise(resolve => setTimeout(resolve, 48)); // Similar to above
+    tracer.span('Similar processing');
 
-    tracer.span('Another similar task');
     await new Promise(resolve => setTimeout(resolve, 44)); // Also similar
+    tracer.span('Another similar task');
 
     // Slow operations
-    tracer.span('Slow database query');
     await new Promise(resolve => setTimeout(resolve, 150));
+    tracer.span('Slow database query');
 
-    tracer.span('Complex computation');
     await new Promise(resolve => setTimeout(resolve, 200));
+    tracer.span('Complex computation');
 
     // Very slow operation
-    tracer.span('Very slow external API call');
     await new Promise(resolve => setTimeout(resolve, 800));
+    tracer.span('Very slow external API call');
 }
 
 async function main() {

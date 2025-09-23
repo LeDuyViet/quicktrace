@@ -1,0 +1,12 @@
+D:\Workspace\go\src\trace\csharp\QuickTrace\bin\Debug\net9.0\QuickTrace.deps.json
+D:\Workspace\go\src\trace\csharp\QuickTrace\bin\Debug\net9.0\QuickTrace.dll
+D:\Workspace\go\src\trace\csharp\QuickTrace\bin\Debug\net9.0\QuickTrace.pdb
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.AssemblyInfoInputs.cache
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.AssemblyInfo.cs
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.csproj.CoreCompileInputs.cache
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.sourcelink.json
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.dll
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\refint\QuickTrace.dll
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\QuickTrace.pdb
+D:\Workspace\go\src\trace\csharp\QuickTrace\obj\Debug\net9.0\ref\QuickTrace.dll

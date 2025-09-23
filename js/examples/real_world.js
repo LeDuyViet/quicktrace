@@ -123,8 +123,8 @@ async function userProfileHandler(req, res) {
     const enrichData = await simulateExternalAPI(tracer, 'user-enrichment-service');
     
     // Final response preparation
-    tracer.span('Response serialization');
     await new Promise(resolve => setTimeout(resolve, 3));
+    tracer.span('Response serialization');
 
     const response = {
         user: userData,
@@ -144,8 +144,8 @@ async function analyticsHandler(req, res) {
     });
 
     // Validate request
-    tracer.span('Request validation');
     await new Promise(resolve => setTimeout(resolve, 5));
+    tracer.span('Request validation');
 
     // Multiple database queries for analytics
     for (let i = 1; i <= 3; i++) {
@@ -158,8 +158,8 @@ async function analyticsHandler(req, res) {
 
     // Generate multiple reports
     for (let i = 1; i <= 4; i++) {
-        tracer.span(`Generate report ${i}`);
         await new Promise(resolve => setTimeout(resolve, 30 + Math.random() * 40));
+        tracer.span(`Generate report ${i}`);
     }
 
     // Store results
@@ -182,16 +182,16 @@ async function healthCheckHandler(req, res) {
     });
 
     // Quick database ping
-    tracer.span('Database ping');
     await new Promise(resolve => setTimeout(resolve, 2 + Math.random() * 8));
+    tracer.span('Database ping');
 
-    // Quick cache ping  
-    tracer.span('Cache ping');
+    // Quick cache ping
     await new Promise(resolve => setTimeout(resolve, 1 + Math.random() * 3));
+    tracer.span('Cache ping');
 
     // External service check
-    tracer.span('External service check');
     await new Promise(resolve => setTimeout(resolve, 5 + Math.random() * 15));
+    tracer.span('External service check');
 
     const response = {
         status: 'healthy',

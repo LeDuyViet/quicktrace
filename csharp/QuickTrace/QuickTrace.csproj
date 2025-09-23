@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>QuickTrace</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>LeDuyViet</Authors>
+    <Description>A lightweight, colorful tracing library for .NET with cross-platform safe colors and smart filtering capabilities.</Description>
+    <PackageProjectUrl>https://github.com/LeDuyViet/quicktrace</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>tracing;performance;debugging;logging</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

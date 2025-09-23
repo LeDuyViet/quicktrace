@@ -17,26 +17,26 @@ void main() async {
   );
 
   // Simulate database operations
-  tracer.span('Connect to database');
   await Future.delayed(Duration(milliseconds: 100));
+  tracer.span('Connect to database');
 
-  tracer.span('Execute query 1');
   await Future.delayed(Duration(milliseconds: 45));
+  tracer.span('Execute query 1');
 
-  tracer.span('Execute query 2');
   await Future.delayed(Duration(milliseconds: 50)); // Similar to query 1
+  tracer.span('Execute query 2');
 
-  tracer.span('Cache result');
   await Future.delayed(Duration(milliseconds: 5));
+  tracer.span('Cache result');
 
-  tracer.span('Ultra fast operation');
   await Future.delayed(Duration(microseconds: 500)); // Will be hidden
+  tracer.span('Ultra fast operation');
 
-  tracer.span('Process business logic');
   await Future.delayed(Duration(milliseconds: 200));
+  tracer.span('Process business logic');
 
-  tracer.span('Send notification');
   await Future.delayed(Duration(milliseconds: 30));
+  tracer.span('Send notification');
 
   tracer.end();
 }

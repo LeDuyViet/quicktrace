@@ -8,11 +8,10 @@ final _random = Random();
 
 // Simulate different types of operations with realistic timing
 Future<Map<String, dynamic>> simulateDatabase(QuickTracer tracer, String query) async {
-  tracer.span('Database: $query');
-
   // Simulate database query time (realistic variability)
   final baseTime = 50 + _random.nextInt(100); // 50-150ms
   await Future.delayed(Duration(milliseconds: baseTime));
+  tracer.span('Database: $query');
 
   return {
     'query': query,
@@ -22,21 +21,19 @@ Future<Map<String, dynamic>> simulateDatabase(QuickTracer tracer, String query) 
 }
 
 Future<bool> simulateCache(QuickTracer tracer, String key) async {
-  tracer.span('Cache lookup: $key');
-
   // Cache operations are usually very fast
   await Future.delayed(Duration(milliseconds: 1 + _random.nextInt(5)));
+  tracer.span('Cache lookup: $key');
 
   // 70% cache hit rate
   return _random.nextDouble() < 0.7;
 }
 
 Future<Map<String, dynamic>> simulateExternalAPI(QuickTracer tracer, String service) async {
-  tracer.span('External API: $service');
-
   // External APIs can be slow and variable
   final baseTime = 200 + _random.nextInt(800); // 200ms-1s
   await Future.delayed(Duration(milliseconds: baseTime));
+  tracer.span('External API: $service');
 
   return {
     'service': service,
@@ -46,8 +43,6 @@ Future<Map<String, dynamic>> simulateExternalAPI(QuickTracer tracer, String serv
 }
 
 Future<void> simulateBusinessLogic(QuickTracer tracer, String complexity) async {
-  tracer.span('Business logic: $complexity');
-
   int duration;
   switch (complexity) {
     case 'simple':
@@ -64,6 +59,7 @@ Future<void> simulateBusinessLogic(QuickTracer tracer, String complexity) async 
   }
 
   await Future.delayed(Duration(milliseconds: duration));
+  tracer.span('Business logic: $complexity');
 }
 
 // HTTP Handlers with tracing
@@ -85,11 +81,11 @@ Future<Map<String, dynamic>> userProfileHandler(String? userId) async {
     userData = await simulateDatabase(tracer, 'SELECT * FROM users WHERE id = $userId');
 
     // Cache the result
-    tracer.span('Cache store');
     await Future.delayed(Duration(milliseconds: 2));
+    tracer.span('Cache store');
   } else {
-    tracer.span('Cache hit');
     await Future.delayed(Duration(milliseconds: 1));
+    tracer.span('Cache hit');
     userData = {
       'id': userId,
       'name': 'John Doe',
@@ -104,8 +100,8 @@ Future<Map<String, dynamic>> userProfileHandler(String? userId) async {
   final enrichData = await simulateExternalAPI(tracer, 'user-enrichment-service');
 
   // Final response preparation
-  tracer.span('Response serialization');
   await Future.delayed(Duration(milliseconds: 3));
+  tracer.span('Response serialization');
 
   final response = {
     'user': userData,
@@ -126,8 +122,8 @@ Future<Map<String, dynamic>> analyticsHandler() async {
   );
 
   // Validate request
-  tracer.span('Request validation');
   await Future.delayed(Duration(milliseconds: 5));
+  tracer.span('Request validation');
 
   // Multiple database queries for analytics
   for (int i = 1; i <= 3; i++) {
@@ -140,8 +136,8 @@ Future<Map<String, dynamic>> analyticsHandler() async {
 
   // Generate multiple reports
   for (int i = 1; i <= 4; i++) {
-    tracer.span('Generate report $i');
     await Future.delayed(Duration(milliseconds: 30 + _random.nextInt(40)));
+    tracer.span('Generate report $i');
   }
 
   // Store results
@@ -165,16 +161,16 @@ Future<Map<String, dynamic>> healthCheckHandler() async {
   );
 
   // Quick database ping
-  tracer.span('Database ping');
   await Future.delayed(Duration(milliseconds: 2 + _random.nextInt(8)));
+  tracer.span('Database ping');
 
   // Quick cache ping
-  tracer.span('Cache ping');
   await Future.delayed(Duration(milliseconds: 1 + _random.nextInt(3)));
+  tracer.span('Cache ping');
 
   // External service check
-  tracer.span('External service check');
   await Future.delayed(Duration(milliseconds: 5 + _random.nextInt(15)));
+  tracer.span('External service check');
 
   final response = {
     'status': 'healthy',

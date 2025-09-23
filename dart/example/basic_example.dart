@@ -10,17 +10,17 @@ void main() async {
   // Basic usage với default style
   final tracer = QuickTracer('Basic Example');
 
-  tracer.span('Initialize database');
   await Future.delayed(Duration(milliseconds: 30));
+  tracer.span('Initialize database');
 
-  tracer.span('Load user data');
   await Future.delayed(Duration(milliseconds: 50));
+  tracer.span('Load user data');
 
-  tracer.span('Process data');
   await Future.delayed(Duration(milliseconds: 20));
+  tracer.span('Process data');
 
-  tracer.span('Generate response');
   await Future.delayed(Duration(milliseconds: 10));
+  tracer.span('Generate response');
 
   tracer.end();
 }

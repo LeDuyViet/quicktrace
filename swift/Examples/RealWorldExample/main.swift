@@ -3,11 +3,10 @@ import QuickTrace
 
 // Simulate different types of operations with realistic timing
 func simulateDatabase(_ tracer: QuickTrace, query: String) -> [String: Any] {
-    tracer.span("Database: \(query)")
-    
     // Simulate database query time (realistic variability)
     let baseTime = 0.050 + Double.random(in: 0...0.100) // 50-150ms
     Thread.sleep(forTimeInterval: baseTime)
+    tracer.span("Database: \(query)")
     
     return [
         "query": query,
@@ -17,22 +16,20 @@ func simulateDatabase(_ tracer: QuickTrace, query: String) -> [String: Any] {
 }
 
 func simulateCache(_ tracer: QuickTrace, key: String) -> Bool {
-    tracer.span("Cache lookup: \(key)")
-    
     // Cache operations are usually very fast
     let cacheTime = 0.001 + Double.random(in: 0...0.004) // 1-5ms
     Thread.sleep(forTimeInterval: cacheTime)
+    tracer.span("Cache lookup: \(key)")
     
     // 70% cache hit rate
     return Double.random(in: 0...1) < 0.7
 }
 
 func simulateExternalAPI(_ tracer: QuickTrace, service: String) -> [String: Any] {
-    tracer.span("External API: \(service)")
-    
     // External APIs can be slow and variable
     let baseTime = 0.200 + Double.random(in: 0...0.800) // 200ms-1s
     Thread.sleep(forTimeInterval: baseTime)
+    tracer.span("External API: \(service)")
     
     return [
         "service": service,
@@ -42,8 +39,6 @@ func simulateExternalAPI(_ tracer: QuickTrace, service: String) -> [String: Any]
 }
 
 func simulateBusinessLogic(_ tracer: QuickTrace, complexity: String) {
-    tracer.span("Business logic: \(complexity)")
-    
     let duration: TimeInterval
     switch complexity {
     case "simple":
@@ -55,8 +50,9 @@ func simulateBusinessLogic(_ tracer: QuickTrace, complexity: String) {
     default:
         duration = 0.010
     }
-    
+
     Thread.sleep(forTimeInterval: duration)
+    tracer.span("Business logic: \(complexity)")
 }
 
 // HTTP Handler simulations
@@ -74,11 +70,11 @@ func userProfileHandler(userID: String = "12345") {
         userData = simulateDatabase(tracer, query: "SELECT * FROM users WHERE id = \(userID)")
         
         // Cache the result
-        tracer.span("Cache store")
         Thread.sleep(forTimeInterval: 0.002) // 2ms
+        tracer.span("Cache store")
     } else {
-        tracer.span("Cache hit")
         Thread.sleep(forTimeInterval: 0.001) // 1ms
+        tracer.span("Cache hit")
         userData = [
             "id": userID,
             "name": "John Doe",
@@ -93,8 +89,8 @@ func userProfileHandler(userID: String = "12345") {
     let enrichData = simulateExternalAPI(tracer, service: "user-enrichment-service")
     
     // Final response preparation
-    tracer.span("Response serialization")
     Thread.sleep(forTimeInterval: 0.003) // 3ms
+    tracer.span("Response serialization")
     
     let response = [
         "user": userData,
@@ -112,8 +108,8 @@ func analyticsHandler() {
         .with(option: .groupSimilar(0.020)) // Group similar ±20ms
     
     // Validate request
-    tracer.span("Request validation")
     Thread.sleep(forTimeInterval: 0.005) // 5ms
+    tracer.span("Request validation")
     
     // Multiple database queries for analytics
     for i in 1...3 {
@@ -125,9 +121,9 @@ func analyticsHandler() {
     
     // Generate multiple reports
     for i in 1...4 {
-        tracer.span("Generate report \(i)")
         let reportTime = 0.030 + Double.random(in: 0...0.040) // 30-70ms
         Thread.sleep(forTimeInterval: reportTime)
+        tracer.span("Generate report \(i)")
     }
     
     // Store results
@@ -148,19 +144,19 @@ func healthCheckHandler() {
         .with(option: .minTotalDuration(0.010)) // Only show if > 10ms
     
     // Quick database ping
-    tracer.span("Database ping")
     let dbPing = 0.002 + Double.random(in: 0...0.008) // 2-10ms
     Thread.sleep(forTimeInterval: dbPing)
-    
+    tracer.span("Database ping")
+
     // Quick cache ping
-    tracer.span("Cache ping")
     let cachePing = 0.001 + Double.random(in: 0...0.003) // 1-4ms
     Thread.sleep(forTimeInterval: cachePing)
-    
+    tracer.span("Cache ping")
+
     // External service check
-    tracer.span("External service check")
     let serviceCheck = 0.005 + Double.random(in: 0...0.015) // 5-20ms
     Thread.sleep(forTimeInterval: serviceCheck)
+    tracer.span("External service check")
     
     let response = [
         "status": "healthy",

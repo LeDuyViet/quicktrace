@@ -3,39 +3,39 @@ import QuickTrace
 
 func simulateVariousOperations(_ tracer: QuickTrace) {
     // Ultra fast operations
-    tracer.span("Ultra fast operation 1")
     Thread.sleep(forTimeInterval: 0.0005) // 0.5ms
-    
-    tracer.span("Ultra fast operation 2")
+    tracer.span("Ultra fast operation 1")
+
     Thread.sleep(forTimeInterval: 0.0008) // 0.8ms
-    
+    tracer.span("Ultra fast operation 2")
+
     // Fast operations
-    tracer.span("Fast validation")
     Thread.sleep(forTimeInterval: 0.005) // 5ms
-    
-    tracer.span("Quick lookup")
+    tracer.span("Fast validation")
+
     Thread.sleep(forTimeInterval: 0.008) // 8ms
-    
+    tracer.span("Quick lookup")
+
     // Medium operations
-    tracer.span("Medium processing")
     Thread.sleep(forTimeInterval: 0.045) // 45ms
-    
-    tracer.span("Similar processing")
+    tracer.span("Medium processing")
+
     Thread.sleep(forTimeInterval: 0.048) // 48ms - Similar to above
-    
-    tracer.span("Another similar task")
+    tracer.span("Similar processing")
+
     Thread.sleep(forTimeInterval: 0.044) // 44ms - Also similar
-    
+    tracer.span("Another similar task")
+
     // Slow operations
-    tracer.span("Slow database query")
     Thread.sleep(forTimeInterval: 0.150) // 150ms
-    
-    tracer.span("Complex computation")
+    tracer.span("Slow database query")
+
     Thread.sleep(forTimeInterval: 0.200) // 200ms
-    
+    tracer.span("Complex computation")
+
     // Very slow operation
-    tracer.span("Very slow external API call")
     Thread.sleep(forTimeInterval: 0.800) // 800ms
+    tracer.span("Very slow external API call")
 }
 
 func main() {

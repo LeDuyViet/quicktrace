@@ -2,23 +2,23 @@ import Foundation
 import QuickTrace
 
 func simulateWork(_ tracer: QuickTrace) {
-    tracer.span("Load configuration")
     Thread.sleep(forTimeInterval: 0.025) // 25ms
-    
-    tracer.span("Connect to database")
+    tracer.span("Load configuration")
+
     Thread.sleep(forTimeInterval: 0.075) // 75ms
-    
-    tracer.span("Execute complex query")
+    tracer.span("Connect to database")
+
     Thread.sleep(forTimeInterval: 0.120) // 120ms
-    
-    tracer.span("Process results")
+    tracer.span("Execute complex query")
+
     Thread.sleep(forTimeInterval: 0.045) // 45ms
-    
-    tracer.span("Cache data")
+    tracer.span("Process results")
+
     Thread.sleep(forTimeInterval: 0.015) // 15ms
-    
-    tracer.span("Generate response")
+    tracer.span("Cache data")
+
     Thread.sleep(forTimeInterval: 0.008) // 8ms
+    tracer.span("Generate response")
 }
 
 func main() {

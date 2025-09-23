@@ -11,23 +11,23 @@ import (
 )
 
 func simulateWork(tracer *tracing.Tracer) {
-	tracer.Span("Load configuration")
 	time.Sleep(25 * time.Millisecond)
+	tracer.Span("Load configuration")
 
-	tracer.Span("Connect to database")
 	time.Sleep(75 * time.Millisecond)
+	tracer.Span("Connect to database")
 
-	tracer.Span("Execute complex query")
 	time.Sleep(120 * time.Millisecond)
+	tracer.Span("Execute complex query")
 
-	tracer.Span("Process results")
 	time.Sleep(45 * time.Millisecond)
+	tracer.Span("Process results")
 
-	tracer.Span("Cache data")
 	time.Sleep(15 * time.Millisecond)
+	tracer.Span("Cache data")
 
-	tracer.Span("Generate response")
 	time.Sleep(8 * time.Millisecond)
+	tracer.Span("Generate response")
 }
 
 func main() {

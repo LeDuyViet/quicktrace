@@ -11,14 +11,14 @@ import (
 )
 
 func doSomeWork(tracer *tracing.Tracer, label string) {
-	tracer.Span("Step 1: " + label)
 	time.Sleep(20 * time.Millisecond)
+	tracer.Span("Step 1: " + label)
 
-	tracer.Span("Step 2: " + label)
 	time.Sleep(30 * time.Millisecond)
+	tracer.Span("Step 2: " + label)
 
-	tracer.Span("Step 3: " + label)
 	time.Sleep(15 * time.Millisecond)
+	tracer.Span("Step 3: " + label)
 }
 
 func main() {
@@ -102,8 +102,8 @@ func main() {
 	})
 
 	fmt.Println("⚡ Fast execution (won't print):")
-	tracer4.Span("Quick task")
 	time.Sleep(10 * time.Millisecond)
+	tracer4.Span("Quick task")
 	tracer4.End() // Won't print because < 50ms
 
 	fmt.Println("🐌 Slow execution (will print):")
@@ -122,14 +122,14 @@ func main() {
 	tracer6 := tracing.NewSimpleTracer("Data Inspection",
 		tracing.WithSilent(true)) // Silent to avoid printing
 
-	tracer6.Span("Database connection")
 	time.Sleep(25 * time.Millisecond)
+	tracer6.Span("Database connection")
 
-	tracer6.Span("Query execution")
 	time.Sleep(75 * time.Millisecond)
+	tracer6.Span("Query execution")
 
-	tracer6.Span("Result processing")
 	time.Sleep(40 * time.Millisecond)
+	tracer6.Span("Result processing")
 
 	tracer6.End()
 

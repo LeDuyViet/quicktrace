@@ -4,14 +4,14 @@ import 'dart:io' show sleep;
 import 'package:quicktrace/quicktrace.dart';
 
 Future<void> doSomeWork(QuickTracer tracer, String label) async {
-  tracer.span('Step 1: $label');
   await Future.delayed(Duration(milliseconds: 20));
+  tracer.span('Step 1: $label');
 
-  tracer.span('Step 2: $label');
   await Future.delayed(Duration(milliseconds: 30));
+  tracer.span('Step 2: $label');
 
-  tracer.span('Step 3: $label');
   await Future.delayed(Duration(milliseconds: 15));
+  tracer.span('Step 3: $label');
 }
 
 void main() async {
@@ -98,8 +98,8 @@ void main() async {
   tracer4.setPrintCondition((t) => t.totalDuration > Duration(milliseconds: 50));
 
   print('⚡ Fast execution (won\'t print):');
-  tracer4.span('Quick task');
   await Future.delayed(Duration(milliseconds: 10));
+  tracer4.span('Quick task');
   tracer4.end(); // Won't print because < 50ms
 
   print('🐌 Slow execution (will print):');
@@ -118,14 +118,14 @@ void main() async {
     silent: true, // Silent to avoid printing
   );
 
-  tracer6.span('Database connection');
   await Future.delayed(Duration(milliseconds: 25));
+  tracer6.span('Database connection');
 
-  tracer6.span('Query execution');
   await Future.delayed(Duration(milliseconds: 75));
+  tracer6.span('Query execution');
 
-  tracer6.span('Result processing');
   await Future.delayed(Duration(milliseconds: 40));
+  tracer6.span('Result processing');
 
   tracer6.end();
 

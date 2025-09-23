@@ -2,14 +2,14 @@ import Foundation
 import QuickTrace
 
 func doSomeWork(_ tracer: QuickTrace, label: String) {
-    tracer.span("Step 1: \(label)")
     Thread.sleep(forTimeInterval: 0.020) // 20ms
-    
-    tracer.span("Step 2: \(label)")
+    tracer.span("Step 1: \(label)")
+
     Thread.sleep(forTimeInterval: 0.030) // 30ms
-    
-    tracer.span("Step 3: \(label)")
+    tracer.span("Step 2: \(label)")
+
     Thread.sleep(forTimeInterval: 0.015) // 15ms
+    tracer.span("Step 3: \(label)")
 }
 
 func main() {
@@ -93,8 +93,8 @@ func main() {
     }
     
     print("⚡ Fast execution (won't print):")
-    tracer4.span("Quick task")
     Thread.sleep(forTimeInterval: 0.010) // 10ms
+    tracer4.span("Quick task")
     tracer4.end() // Won't print because < 50ms
     
     print("🐌 Slow execution (will print):")
@@ -113,14 +113,14 @@ func main() {
     let tracer6 = QuickTrace(name: "Data Inspection")
         .with(option: .silent(true)) // Silent to avoid printing
     
-    tracer6.span("Database connection")
     Thread.sleep(forTimeInterval: 0.025) // 25ms
-    
-    tracer6.span("Query execution")
+    tracer6.span("Database connection")
+
     Thread.sleep(forTimeInterval: 0.075) // 75ms
-    
-    tracer6.span("Result processing")
+    tracer6.span("Query execution")
+
     Thread.sleep(forTimeInterval: 0.040) // 40ms
+    tracer6.span("Result processing")
     
     tracer6.end()
     

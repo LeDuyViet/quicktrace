@@ -11,39 +11,39 @@ public class FilteringExample {
     
     private static void simulateVariousOperations(Tracer tracer) throws InterruptedException {
         // Ultra fast operations
+        Thread.sleep(1);
         tracer.span("Ultra fast operation 1");
+
         Thread.sleep(1);
-        
         tracer.span("Ultra fast operation 2");
-        Thread.sleep(1);
-        
+
         // Fast operations
-        tracer.span("Fast validation");
         Thread.sleep(5);
-        
-        tracer.span("Quick lookup");
+        tracer.span("Fast validation");
+
         Thread.sleep(8);
-        
+        tracer.span("Quick lookup");
+
         // Medium operations
-        tracer.span("Medium processing");
         Thread.sleep(45);
-        
-        tracer.span("Similar processing");
+        tracer.span("Medium processing");
+
         Thread.sleep(48); // Similar to above
-        
-        tracer.span("Another similar task");
+        tracer.span("Similar processing");
+
         Thread.sleep(44); // Also similar
-        
+        tracer.span("Another similar task");
+
         // Slow operations
-        tracer.span("Slow database query");
         Thread.sleep(150);
-        
-        tracer.span("Complex computation");
+        tracer.span("Slow database query");
+
         Thread.sleep(200);
-        
+        tracer.span("Complex computation");
+
         // Very slow operation
-        tracer.span("Very slow external API call");
         Thread.sleep(800);
+        tracer.span("Very slow external API call");
     }
     
     public static void main(String[] args) throws InterruptedException {

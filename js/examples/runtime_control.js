@@ -1,14 +1,14 @@
 const { Tracer } = require('../tracer.js');
 
 async function doSomeWork(tracer, label) {
-    tracer.span(`Step 1: ${label}`);
     await new Promise(resolve => setTimeout(resolve, 20));
+    tracer.span(`Step 1: ${label}`);
 
-    tracer.span(`Step 2: ${label}`);
     await new Promise(resolve => setTimeout(resolve, 30));
+    tracer.span(`Step 2: ${label}`);
 
-    tracer.span(`Step 3: ${label}`);
     await new Promise(resolve => setTimeout(resolve, 15));
+    tracer.span(`Step 3: ${label}`);
 }
 
 async function main() {
@@ -91,8 +91,8 @@ async function main() {
     });
 
     console.log('⚡ Fast execution (won\'t print):');
-    tracer4.span('Quick task');
     await new Promise(resolve => setTimeout(resolve, 10));
+    tracer4.span('Quick task');
     tracer4.end(); // Won't print because < 50ms
 
     console.log('🐌 Slow execution (will print):');
@@ -111,14 +111,14 @@ async function main() {
         silent: true // Silent to avoid printing
     });
 
-    tracer6.span('Database connection');
     await new Promise(resolve => setTimeout(resolve, 25));
+    tracer6.span('Database connection');
 
-    tracer6.span('Query execution');
     await new Promise(resolve => setTimeout(resolve, 75));
+    tracer6.span('Query execution');
 
-    tracer6.span('Result processing');
     await new Promise(resolve => setTimeout(resolve, 40));
+    tracer6.span('Result processing');
 
     tracer6.end();
 

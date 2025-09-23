@@ -19,26 +19,26 @@ public class AdvancedExample {
                 .build();
         
         // Simulate database operations
-        tracer.span("Connect to database");
         Thread.sleep(100);
-        
-        tracer.span("Execute query 1");
+        tracer.span("Connect to database");
+
         Thread.sleep(45);
-        
-        tracer.span("Execute query 2");
+        tracer.span("Execute query 1");
+
         Thread.sleep(50); // Similar to query 1
-        
-        tracer.span("Cache result");
+        tracer.span("Execute query 2");
+
         Thread.sleep(5);
-        
-        tracer.span("Ultra fast operation");
+        tracer.span("Cache result");
+
         Thread.sleep(1); // Will be hidden
-        
-        tracer.span("Process business logic");
+        tracer.span("Ultra fast operation");
+
         Thread.sleep(200);
-        
-        tracer.span("Send notification");
+        tracer.span("Process business logic");
+
         Thread.sleep(30);
+        tracer.span("Send notification");
         
         tracer.end();
     }

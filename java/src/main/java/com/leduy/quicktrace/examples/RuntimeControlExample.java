@@ -12,14 +12,14 @@ import java.util.List;
 public class RuntimeControlExample {
     
     private static void doSomeWork(Tracer tracer, String label) throws InterruptedException {
-        tracer.span("Step 1: " + label);
         Thread.sleep(20);
-        
-        tracer.span("Step 2: " + label);
+        tracer.span("Step 1: " + label);
+
         Thread.sleep(30);
-        
-        tracer.span("Step 3: " + label);
+        tracer.span("Step 2: " + label);
+
         Thread.sleep(15);
+        tracer.span("Step 3: " + label);
     }
     
     public static void main(String[] args) throws InterruptedException {
@@ -104,8 +104,8 @@ public class RuntimeControlExample {
         tracer4.setPrintCondition(t -> t.getTotalDuration().compareTo(Duration.ofMillis(50)) > 0);
         
         System.out.println("⚡ Fast execution (won't print):");
-        tracer4.span("Quick task");
         Thread.sleep(10);
+        tracer4.span("Quick task");
         tracer4.end(); // Won't print because < 50ms
         
         System.out.println("🐌 Slow execution (will print):");
@@ -123,14 +123,14 @@ public class RuntimeControlExample {
                 .silent(true) // Silent to avoid printing
                 .build();
         
-        tracer6.span("Database connection");
         Thread.sleep(25);
-        
-        tracer6.span("Query execution");
+        tracer6.span("Database connection");
+
         Thread.sleep(75);
-        
-        tracer6.span("Result processing");
+        tracer6.span("Query execution");
+
         Thread.sleep(40);
+        tracer6.span("Result processing");
         
         tracer6.end();
         

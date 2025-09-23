@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "QuickTrace.Examples/1.0.0": {
+        "dependencies": {
+          "QuickTrace": "1.0.0"
+        },
+        "runtime": {
+          "QuickTrace.Examples.dll": {}
+        }
+      },
+      "QuickTrace/1.0.0": {
+        "runtime": {
+          "QuickTrace.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "QuickTrace.Examples/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "QuickTrace/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

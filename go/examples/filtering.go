@@ -12,39 +12,39 @@ import (
 
 func simulateVariousOperations(tracer *tracing.Tracer) {
 	// Ultra fast operations
-	tracer.Span("Ultra fast operation 1")
 	time.Sleep(500 * time.Microsecond)
+	tracer.Span("Ultra fast operation 1")
 
-	tracer.Span("Ultra fast operation 2")
 	time.Sleep(800 * time.Microsecond)
+	tracer.Span("Ultra fast operation 2")
 
 	// Fast operations
-	tracer.Span("Fast validation")
 	time.Sleep(5 * time.Millisecond)
+	tracer.Span("Fast validation")
 
-	tracer.Span("Quick lookup")
 	time.Sleep(8 * time.Millisecond)
+	tracer.Span("Quick lookup")
 
 	// Medium operations
-	tracer.Span("Medium processing")
 	time.Sleep(45 * time.Millisecond)
+	tracer.Span("Medium processing")
 
-	tracer.Span("Similar processing")
 	time.Sleep(48 * time.Millisecond) // Similar to above
+	tracer.Span("Similar processing")
 
-	tracer.Span("Another similar task")
 	time.Sleep(44 * time.Millisecond) // Also similar
+	tracer.Span("Another similar task")
 
 	// Slow operations
-	tracer.Span("Slow database query")
 	time.Sleep(150 * time.Millisecond)
+	tracer.Span("Slow database query")
 
-	tracer.Span("Complex computation")
 	time.Sleep(200 * time.Millisecond)
+	tracer.Span("Complex computation")
 
 	// Very slow operation
-	tracer.Span("Very slow external API call")
 	time.Sleep(800 * time.Millisecond)
+	tracer.Span("Very slow external API call")
 }
 
 func main() {

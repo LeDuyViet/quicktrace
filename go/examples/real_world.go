@@ -15,11 +15,10 @@ import (
 
 // Simulate different types of operations with realistic timing
 func simulateDatabase(tracer *tracing.Tracer, query string) map[string]interface{} {
-	tracer.Span("Database: " + query)
-
 	// Simulate database query time (realistic variability)
 	baseTime := 50 + rand.Intn(100) // 50-150ms
 	time.Sleep(time.Duration(baseTime) * time.Millisecond)
+	tracer.Span("Database: " + query)
 
 	return map[string]interface{}{
 		"query":   query,
@@ -29,21 +28,19 @@ func simulateDatabase(tracer *tracing.Tracer, query string) map[string]interface
 }
 
 func simulateCache(tracer *tracing.Tracer, key string) bool {
-	tracer.Span("Cache lookup: " + key)
-
 	// Cache operations are usually very fast
 	time.Sleep(time.Duration(1+rand.Intn(5)) * time.Millisecond)
+	tracer.Span("Cache lookup: " + key)
 
 	// 70% cache hit rate
 	return rand.Float32() < 0.7
 }
 
 func simulateExternalAPI(tracer *tracing.Tracer, service string) map[string]interface{} {
-	tracer.Span("External API: " + service)
-
 	// External APIs can be slow and variable
 	baseTime := 200 + rand.Intn(800) // 200ms-1s
 	time.Sleep(time.Duration(baseTime) * time.Millisecond)
+	tracer.Span("External API: " + service)
 
 	return map[string]interface{}{
 		"service": service,
@@ -53,8 +50,6 @@ func simulateExternalAPI(tracer *tracing.Tracer, service string) map[string]inte
 }
 
 func simulateBusinessLogic(tracer *tracing.Tracer, complexity string) {
-	tracer.Span("Business logic: " + complexity)
-
 	var duration int
 	switch complexity {
 	case "simple":
@@ -66,6 +61,7 @@ func simulateBusinessLogic(tracer *tracing.Tracer, complexity string) {
 	}
 
 	time.Sleep(time.Duration(duration) * time.Millisecond)
+	tracer.Span("Business logic: " + complexity)
 }
 
 // HTTP Handlers with tracing
@@ -88,11 +84,11 @@ func userProfileHandler(w http.ResponseWriter, r *http.Request) {
 		userData = simulateDatabase(tracer, "SELECT * FROM users WHERE id = "+userID)
 
 		// Cache the result
-		tracer.Span("Cache store")
 		time.Sleep(2 * time.Millisecond)
+		tracer.Span("Cache store")
 	} else {
-		tracer.Span("Cache hit")
 		time.Sleep(1 * time.Millisecond)
+		tracer.Span("Cache hit")
 		userData = map[string]interface{}{
 			"id":     userID,
 			"name":   "John Doe",
@@ -107,8 +103,8 @@ func userProfileHandler(w http.ResponseWriter, r *http.Request) {
 	enrichData := simulateExternalAPI(tracer, "user-enrichment-service")
 
 	// Final response preparation
-	tracer.Span("Response serialization")
 	time.Sleep(3 * time.Millisecond)
+	tracer.Span("Response serialization")
 
 	response := map[string]interface{}{
 		"user":       userData,
@@ -129,8 +125,8 @@ func analyticsHandler(w http.ResponseWriter, r *http.Request) {
 		tracing.WithGroupSimilar(20*time.Millisecond))
 
 	// Validate request
-	tracer.Span("Request validation")
 	time.Sleep(5 * time.Millisecond)
+	tracer.Span("Request validation")
 
 	// Multiple database queries for analytics
 	for i := 1; i <= 3; i++ {
@@ -143,8 +139,8 @@ func analyticsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Generate multiple reports
 	for i := 1; i <= 4; i++ {
-		tracer.Span(fmt.Sprintf("Generate report %d", i))
 		time.Sleep(time.Duration(30+rand.Intn(40)) * time.Millisecond)
+		tracer.Span(fmt.Sprintf("Generate report %d", i))
 	}
 
 	// Store results
@@ -168,16 +164,16 @@ func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
 		tracing.WithMinTotalDuration(10*time.Millisecond)) // Only show if > 10ms
 
 	// Quick database ping
-	tracer.Span("Database ping")
 	time.Sleep(time.Duration(2+rand.Intn(8)) * time.Millisecond)
+	tracer.Span("Database ping")
 
 	// Quick cache ping
-	tracer.Span("Cache ping")
 	time.Sleep(time.Duration(1+rand.Intn(3)) * time.Millisecond)
+	tracer.Span("Cache ping")
 
 	// External service check
-	tracer.Span("External service check")
 	time.Sleep(time.Duration(5+rand.Intn(15)) * time.Millisecond)
+	tracer.Span("External service check")
 
 	response := map[string]interface{}{
 		"status":    "healthy",

@@ -11,26 +11,26 @@ async function main() {
     });
 
     // Simulate database operations
-    tracer.span('Connect to database');
     await new Promise(resolve => setTimeout(resolve, 100));
+    tracer.span('Connect to database');
 
-    tracer.span('Execute query 1');
     await new Promise(resolve => setTimeout(resolve, 45));
+    tracer.span('Execute query 1');
 
-    tracer.span('Execute query 2');
     await new Promise(resolve => setTimeout(resolve, 50)); // Similar to query 1
+    tracer.span('Execute query 2');
 
-    tracer.span('Cache result');
     await new Promise(resolve => setTimeout(resolve, 5));
+    tracer.span('Cache result');
 
-    tracer.span('Ultra fast operation');
     await new Promise(resolve => setTimeout(resolve, 0.5)); // Will be hidden
+    tracer.span('Ultra fast operation');
 
-    tracer.span('Process business logic');
     await new Promise(resolve => setTimeout(resolve, 200));
+    tracer.span('Process business logic');
 
-    tracer.span('Send notification');
     await new Promise(resolve => setTimeout(resolve, 30));
+    tracer.span('Send notification');
 
     tracer.end();
 }

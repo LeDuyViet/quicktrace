@@ -5,17 +5,17 @@ func main() {
     // Basic usage với default style
     let tracer = QuickTrace(name: "Basic Example")
     
-    tracer.span("Initialize database")
     Thread.sleep(forTimeInterval: 0.030) // 30ms
-    
-    tracer.span("Load user data")
+    tracer.span("Initialize database")
+
     Thread.sleep(forTimeInterval: 0.050) // 50ms
-    
-    tracer.span("Process data")
+    tracer.span("Load user data")
+
     Thread.sleep(forTimeInterval: 0.020) // 20ms
-    
-    tracer.span("Generate response")
+    tracer.span("Process data")
+
     Thread.sleep(forTimeInterval: 0.010) // 10ms
+    tracer.span("Generate response")
     
     tracer.end()
 }

@@ -13,17 +13,17 @@ func main() {
 	// Basic usage với default style
 	tracer := tracing.NewSimpleTracer("Basic Example")
 
-	tracer.Span("Initialize database")
 	time.Sleep(30 * time.Millisecond)
+	tracer.Span("Initialize database")
 
-	tracer.Span("Load user data")
 	time.Sleep(50 * time.Millisecond)
+	tracer.Span("Load user data")
 
-	tracer.Span("Process data")
 	time.Sleep(20 * time.Millisecond)
+	tracer.Span("Process data")
 
-	tracer.Span("Generate response")
 	time.Sleep(10 * time.Millisecond)
+	tracer.Span("Generate response")
 
 	tracer.End()
 }

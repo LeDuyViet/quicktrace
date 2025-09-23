@@ -1,23 +1,23 @@
 const { Tracer } = require('../tracer.js');
 
 async function simulateWork(tracer) {
-    tracer.span('Load configuration');
     await new Promise(resolve => setTimeout(resolve, 25));
+    tracer.span('Load configuration');
 
-    tracer.span('Connect to database');
     await new Promise(resolve => setTimeout(resolve, 75));
+    tracer.span('Connect to database');
 
-    tracer.span('Execute complex query');
     await new Promise(resolve => setTimeout(resolve, 120));
+    tracer.span('Execute complex query');
 
-    tracer.span('Process results');
     await new Promise(resolve => setTimeout(resolve, 45));
+    tracer.span('Process results');
 
-    tracer.span('Cache data');
     await new Promise(resolve => setTimeout(resolve, 15));
+    tracer.span('Cache data');
 
-    tracer.span('Generate response');
     await new Promise(resolve => setTimeout(resolve, 8));
+    tracer.span('Generate response');
 }
 
 async function main() {

@@ -10,26 +10,26 @@ func main() {
         .with(option: .groupSimilar(0.005))  // Group similar ±5ms
     
     // Simulate database operations
-    tracer.span("Connect to database")
     Thread.sleep(forTimeInterval: 0.100) // 100ms
-    
-    tracer.span("Execute query 1")
+    tracer.span("Connect to database")
+
     Thread.sleep(forTimeInterval: 0.045) // 45ms
-    
-    tracer.span("Execute query 2")
+    tracer.span("Execute query 1")
+
     Thread.sleep(forTimeInterval: 0.050) // 50ms - Similar to query 1
-    
-    tracer.span("Cache result")
+    tracer.span("Execute query 2")
+
     Thread.sleep(forTimeInterval: 0.005) // 5ms
-    
-    tracer.span("Ultra fast operation")
+    tracer.span("Cache result")
+
     Thread.sleep(forTimeInterval: 0.0005) // 0.5ms - Will be hidden
-    
-    tracer.span("Process business logic")
+    tracer.span("Ultra fast operation")
+
     Thread.sleep(forTimeInterval: 0.200) // 200ms
-    
-    tracer.span("Send notification")
+    tracer.span("Process business logic")
+
     Thread.sleep(forTimeInterval: 0.030) // 30ms
+    tracer.span("Send notification")
     
     tracer.end()
 }

@@ -19,26 +19,26 @@ func main() {
 	)
 
 	// Simulate database operations
-	tracer.Span("Connect to database")
 	time.Sleep(100 * time.Millisecond)
+	tracer.Span("Connect to database")
 
-	tracer.Span("Execute query 1")
 	time.Sleep(45 * time.Millisecond)
+	tracer.Span("Execute query 1")
 
-	tracer.Span("Execute query 2")
 	time.Sleep(50 * time.Millisecond) // Similar to query 1
+	tracer.Span("Execute query 2")
 
-	tracer.Span("Cache result")
 	time.Sleep(5 * time.Millisecond)
+	tracer.Span("Cache result")
 
-	tracer.Span("Ultra fast operation")
 	time.Sleep(500 * time.Microsecond) // Will be hidden
+	tracer.Span("Ultra fast operation")
 
-	tracer.Span("Process business logic")
 	time.Sleep(200 * time.Millisecond)
+	tracer.Span("Process business logic")
 
-	tracer.Span("Send notification")
 	time.Sleep(30 * time.Millisecond)
+	tracer.Span("Send notification")
 
 	tracer.End()
 }
