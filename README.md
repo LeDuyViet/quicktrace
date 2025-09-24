@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![QuickTrace Logo](StyleColorful.png)
+![QuickTrace Logo](StyleDetailed.png)
 
 **A high-performance, multi-language tracing library with beautiful colored output**
 
@@ -49,8 +49,8 @@
     - [🟢 **Go**](#-go)
     - [🟡 **JavaScript**](#-javascript)
   - [🎨 Output Styles](#-output-styles)
-    - [📄 **StyleDefault**](#-styledefault)
     - [🎯 **StyleColorful**](#-stylecolorful)
+    - [📄 **StyleDefault**](#-styledefault)
     - [🌲 **StyleMinimal**](#-styleminimal)
     - [📊 **StyleDetailed**](#-styledetailed)
     - [📋 **StyleTable**](#-styletable)
